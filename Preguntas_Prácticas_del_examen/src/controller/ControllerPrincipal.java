@@ -4,26 +4,37 @@
  */
 package controller;
 
+import DTO.produccionDTO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import view.DashBoard;
 
-public class ControllerPrincipal {
+public class ControllerPrincipal implements ActionListener{
     
     DashBoard mn;
+    produccionDTO pro = new produccionDTO();
+    
 
     public ControllerPrincipal(DashBoard mn) {
         this.mn = mn;
-        imprimirProduccion();
+        this.mn.btn_insertar.addActionListener(this);
+        this.mn.btn_ver.addActionListener(this);
     }
     
     
-    public void imprimirProduccion(){
-        String Produccion = " Actividad: SubProceso de Autorización de Insumos para su compra\n" +
-"    Codigo: FAB-006\n" +
-"    Id: 7\n" +
-"    Nombre: FAB-005 Control de Calidad\n" +
-"    Responsable: FABRICACION\n" +
-"    Uso: CALIDAD";
-        mn.textArea.setText(Produccion);
+    public void imprimirProduccion(String textoProduccion){
+        mn.textArea.setText(textoProduccion);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == mn.btn_insertar) {
+            pro.Aceptar(mn.txt_Actividad.getText(), mn.txt_Codigo.getText(), Integer.parseInt(mn.txt_id.getText()), mn.txt_Nombre.getText(), mn.txt_Responsable.getText(), mn.txt_uso.getText());
+        } else if (e.getSource() == mn.btn_ver) {
+            imprimirProduccion(pro.setDatos());
+        }
+    }
+    
+    
     
 }
