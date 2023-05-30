@@ -4,10 +4,6 @@
  */
 package models;
 
-/**
- *
- * @author CCNAR
- */
 public class produccionModels {
     private String actividad;
     private String codigo;
