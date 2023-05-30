@@ -5,10 +5,13 @@
 package main;
 
 import models.AlumnoModels;
+import view.DashBoard;
 
 public class principal {
     
     public static void main(String[] args) {
-        AlumnoModels.author63841();
+        //AlumnoModels.author63841();
+        DashBoard pr = new DashBoard();
+        pr.setVisible(true);
     }
 }
